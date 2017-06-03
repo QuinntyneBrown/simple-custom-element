@@ -1,8 +1,8 @@
-const htmlTemplate = require("./simple.component.html");
-const styles = require("./simple.component.scss");
+const html = require("./simple.component.html");
+const css = require("./simple.component.scss");
 
 const template = document.createElement("template");
-template.innerHTML = `${htmlTemplate}<style>${styles}</style>`;
+template.innerHTML = `<style>${css}</style>${html}`;
 
 export class SimpleComponent extends HTMLElement {
     constructor() {

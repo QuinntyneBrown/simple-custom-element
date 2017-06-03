@@ -1,8 +1,15 @@
 :host {
-    display:block;
+    display:inline-block;
+    color:#000;
+    cursor:pointer;
 
     h1 {
         font-family:sans-serif;
-        line-height:3em;        
+        line-height:3em;   
+        padding:0 1.5em;     
     }
+}
+
+:host(:hover) {
+    color:#fa0;
 }
