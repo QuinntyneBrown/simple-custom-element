@@ -74,27 +74,11 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="index.html" />
-    <Content Include="libs\native-shim.js" />
-    <Content Include="packages.config" />
     <Content Include="webpack.config.js" />
     <Content Include="tsconfig.json" />
-    <Content Include="typings.json" />
     <Content Include="package.json" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <Content Include="src\app\simple.component.html">
-      <DependentUpon>simple.component.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\app\simple.component.scss">
-      <DependentUpon>simple.component.ts</DependentUpon>
-    </Content>
-    <Content Include="Web.config" />
+    <Content Include="src\simple.component.scss" />
+    <Content Include="src\simple.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -139,9 +123,7 @@
   </Target>
   -->
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\simple.component.ts" />
-    <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\app\index.ts" />
+    <TypeScriptCompile Include="src\simple.component.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

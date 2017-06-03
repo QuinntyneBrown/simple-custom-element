@@ -1,5 +1,8 @@
-const template = require("./simple.component.html");
+const htmlTemplate = require("./simple.component.html");
 const styles = require("./simple.component.scss");
+
+const template = document.createElement("template");
+template.innerHTML = `${htmlTemplate}<style>${styles}</style>`;
 
 export class SimpleComponent extends HTMLElement {
     constructor() {
@@ -11,7 +14,8 @@ export class SimpleComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `<style>${styles}</style> ${template}`;
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(document.importNode(template.content, true));  
         this._bind();
         this._setEventListeners();
     }
