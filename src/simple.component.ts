@@ -7,16 +7,14 @@ template.innerHTML = `<style>${css}</style>${html}`;
 export class SimpleComponent extends HTMLElement {
     constructor() {
         super();
-        this.sayHi = this.sayHi.bind(this);
+        this.alert = this.alert.bind(this);
     }
 
-    public heading: string;
-
-    public get headingHTMLElement():HTMLHeadingElement { return this.shadowRoot.querySelector("h1"); }
-
+    public message: string;
+    
     static get observedAttributes() {
         return [
-            "heading"
+            "message"
         ];
     }
 
@@ -27,29 +25,26 @@ export class SimpleComponent extends HTMLElement {
         this._setEventListeners();        
     }
 
-    public sayHi() {
-        alert("Hi");
+    public alert() {
+        alert(this.message);
     }
 
     private _bind() {
-        this.headingHTMLElement.textContent = this.heading;
+
     }
 
     private _setEventListeners() {
-        this.addEventListener("click", this.sayHi);
+        this.addEventListener("click", this.alert);
     }
 
     disconnectedCallback() {
-        this.removeEventListener("click", this.sayHi);
+        this.removeEventListener("click", this.alert);
     }
     
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
-            case "heading":
-                this.heading = newValue;
-
-                if (this.parentNode)
-                    this._bind();
+            case "message":
+                this.message = newValue;                
                 break;
         }
     }
