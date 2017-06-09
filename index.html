@@ -16,5 +16,11 @@
 <body>
     <ce-simple message="What up thou?">My Simple Custom Element</ce-simple>
     <script src="dist/simple.component.js?v=1"></script>
+
+    <script>
+        customElements.whenDefined("ce-simple").then(() => {
+            console.log("simple element loaded");
+        });
+    </script>
 </body>
 </html>

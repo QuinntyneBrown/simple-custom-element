@@ -21,6 +21,10 @@ export class SimpleComponent extends HTMLElement {
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(document.importNode(template.content, true));  
+
+        if (!this.hasAttribute('role'))
+            this.setAttribute('role', 'simple');
+
         this._bind();
         this._setEventListeners();        
     }
