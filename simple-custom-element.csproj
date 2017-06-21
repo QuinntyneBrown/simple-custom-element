@@ -73,13 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="gulpfile.js" />
     <Content Include="index.html" />
-    <Content Include="src\simple.component.html">
-      <DependentUpon>simple.component.ts</DependentUpon>
+    <Content Include="src\simple.component.css">
+      <DependentUpon>simple.component.html</DependentUpon>
     </Content>
-    <Content Include="src\simple.component.scss">
-      <DependentUpon>simple.component.ts</DependentUpon>
-    </Content>
+    <Content Include="src\simple.component.html" />
     <Content Include="webpack.config.js" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
@@ -127,7 +126,10 @@
   </Target>
   -->
   <ItemGroup>
-    <TypeScriptCompile Include="src\simple.component.ts" />
+    <TypeScriptCompile Include="src\simple.component.ts">
+      <DependentUpon>simple.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
