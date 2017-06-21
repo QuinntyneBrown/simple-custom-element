@@ -8,9 +8,9 @@ module.exports = {
         'simple.component': './src/simple.component'
     },
     output: {
-        path: __dirname + "/dist",
+        path: __dirname + "/bunndle",
         filename: "[name].js",
-        publicPath: "dist/"
+        publicPath: "bunndle/"
     },
     resolve: {
         extensions: ['.ts', '.js', '.jpg', '.jpeg', '.gif', '.png', '.css', '.html']

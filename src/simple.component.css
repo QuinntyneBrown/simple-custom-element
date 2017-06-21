@@ -2,12 +2,12 @@
     color:#000;
     cursor:pointer;
     display:inline-block;
+}
 
-    h1 {
-        font-family:sans-serif;
-        line-height:3em;   
-        padding:0 1.5em;     
-    }
+h1 {
+    font-family:sans-serif;
+    line-height:3em;   
+    padding:0 1.5em;     
 }
 
 :host(:hover) {

@@ -1,8 +1,11 @@
-const html = require("./simple.component.html");
-const css = require("./simple.component.scss");
+declare var System: any;
 
 const template = document.createElement("template");
-template.innerHTML = `<style>${css}</style>${html}`;
+
+const promises = Promise.all([
+    System.import("./simple.component.html"),
+    System.import("./simple.component.css")
+]);
 
 export class SimpleComponent extends HTMLElement {
     constructor() {
@@ -18,12 +21,20 @@ export class SimpleComponent extends HTMLElement {
         ];
     }
 
-    connectedCallback() {
+    async connectedCallback() {    
+
+        const assests = await promises;
+        
+        template.innerHTML = `<style>${assests[1]}</style>${assests[0]}`; 
+   
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(document.importNode(template.content, true));  
 
         if (!this.hasAttribute('role'))
             this.setAttribute('role', 'simple');
+
+        if (!this.hasAttribute('tabindex'))
+            this.setAttribute('tabindex', '0');
 
         this._bind();
         this._setEventListeners();        

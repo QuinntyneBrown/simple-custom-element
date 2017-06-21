@@ -25,10 +25,9 @@ bld/
 
 src/**/*.js
 src/**/*.js.map
-src/**/*.css
-src/**/*.css.map
 
 dist
+build
 
 # Visual Studio 2015 cache/options directory
 .vs/
