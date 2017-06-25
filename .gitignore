@@ -28,7 +28,7 @@ src/**/*.js.map
 
 dist
 build
-
+bundle
 
 # Visual Studio 2015 cache/options directory
 .vs/
