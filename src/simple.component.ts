@@ -7,6 +7,7 @@ const promises = Promise.all([
     System.import("./simple.component.css")
 ]);
 
+
 export class SimpleComponent extends HTMLElement {
     constructor() {
         super();
