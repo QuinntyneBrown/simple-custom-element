@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/simple.component.html"],"names":[],"mappings":";;;;;AAAA,0C","file":"1.js","sourcesContent":["module.exports = \"<h1><slot></slot></h1>\";\n\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/simple.component.html\n// module id = 1\n// module chunks = 1"],"sourceRoot":""}
