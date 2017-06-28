@@ -24,7 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.4.1</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
@@ -73,8 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="dist\simple.component.css" />
-    <Content Include="dist\simple.component.html" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
     <Content Include="src\simple.component.css">
@@ -128,6 +126,7 @@
   </Target>
   -->
   <ItemGroup>
+    <TypeScriptCompile Include="src\hello-world.ts" />
     <TypeScriptCompile Include="src\simple.component.ts">
       <DependentUpon>simple.component.html</DependentUpon>
     </TypeScriptCompile>
