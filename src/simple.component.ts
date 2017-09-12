@@ -23,9 +23,9 @@ export class SimpleComponent extends HTMLElement {
 
     async connectedCallback() {    
 
-        const assests = await promises;
+        const assets = await promises;
         
-        template.innerHTML = `<style>${assests[1]}</style>${assests[0]}`; 
+        template.innerHTML = `<style>${assets[1]}</style>${assets[0]}`; 
    
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(document.importNode(template.content, true));  

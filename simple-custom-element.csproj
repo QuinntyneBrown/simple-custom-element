@@ -30,6 +30,7 @@
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
     <TypeScritModuleResolution>Classic</TypeScritModuleResolution>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,7 +127,6 @@
   </Target>
   -->
   <ItemGroup>
-    <TypeScriptCompile Include="src\hello-world.ts" />
     <TypeScriptCompile Include="src\simple.component.ts">
       <DependentUpon>simple.component.html</DependentUpon>
     </TypeScriptCompile>
