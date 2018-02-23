@@ -1,6 +1,6 @@
-import { html, TemplateResult } from "lit-html";
+import { TemplateResult } from "lit-html";
 import { unsafeHTML } from "lit-html/lib/unsafe-html";
-import { render } from "lit-html/lib/lit-extended";
+import { render, html } from "lit-html/lib/lit-extended";
 
 const styles = unsafeHTML(`<style>${require("./simple.component.css")}</style>`);
 
@@ -21,6 +21,7 @@ export class SimpleComponent extends HTMLElement {
 
     public get template(): TemplateResult {
         return html`
+            ${styles}
             <button on-click=${this._handleClick}>Click Me</button>
             <h1><slot></slot></h1>
         `;
@@ -35,9 +36,7 @@ export class SimpleComponent extends HTMLElement {
         if (!this.hasAttribute('tabindex'))
             this.setAttribute('tabindex', '0');
 
-        render(this.template, this.shadowRoot)
-
-        this._setEventListeners();        
+        render(this.template, this.shadowRoot)    
     }
 
     public _handleClick($event) {
@@ -46,14 +45,6 @@ export class SimpleComponent extends HTMLElement {
 
     public alert() {
         alert(this.message);
-    }
-    
-    private _setEventListeners() {
-        //this.shadowRoot.addEventListener("click", this.alert);
-    }
-
-    disconnectedCallback() {
-        this.shadowRoot.removeEventListener("click", this.alert);
     }
     
     attributeChangedCallback (name, oldValue, newValue) {
