@@ -1,16 +1,14 @@
-declare var System: any;
+import { html, TemplateResult } from "lit-html";
+import { unsafeHTML } from "lit-html/lib/unsafe-html";
+import { render } from "lit-html/lib/lit-extended";
 
-const template = document.createElement("template");
-
-const promises = Promise.all([
-    System.import("./simple.component.html"),
-    System.import("./simple.component.css")
-]);
+const styles = unsafeHTML(`<style>${require("./simple.component.css")}</style>`);
 
 export class SimpleComponent extends HTMLElement {
     constructor() {
         super();
         this.alert = this.alert.bind(this);
+        this._handleClick = (e) => { console.log('click'); };
     }
 
     public message: string;
@@ -21,39 +19,41 @@ export class SimpleComponent extends HTMLElement {
         ];
     }
 
-    async connectedCallback() {    
+    public get template(): TemplateResult {
+        return html`
+            <button on-click=${this._handleClick}>Click Me</button>
+            <h1><slot></slot></h1>
+        `;
+    }
 
-        const assets = await promises;
-        
-        template.innerHTML = `<style>${assets[1]}</style>${assets[0]}`; 
-   
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(document.importNode(template.content, true));  
-
+    connectedCallback() {    
+        if (!this.shadowRoot) this.attachShadow({ mode: 'open' });
+  
         if (!this.hasAttribute('role'))
             this.setAttribute('role', 'simple');
 
         if (!this.hasAttribute('tabindex'))
             this.setAttribute('tabindex', '0');
 
-        this._bind();
+        render(this.template, this.shadowRoot)
+
         this._setEventListeners();        
+    }
+
+    public _handleClick($event) {
+        alert("What?");
     }
 
     public alert() {
         alert(this.message);
     }
-
-    private _bind() {
-
-    }
-
+    
     private _setEventListeners() {
-        this.addEventListener("click", this.alert);
+        //this.shadowRoot.addEventListener("click", this.alert);
     }
 
     disconnectedCallback() {
-        this.removeEventListener("click", this.alert);
+        this.shadowRoot.removeEventListener("click", this.alert);
     }
     
     attributeChangedCallback (name, oldValue, newValue) {
